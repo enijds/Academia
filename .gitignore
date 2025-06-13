@@ -1,0 +1,173 @@
+# -----------------------------------------------------------------------------
+# Arquivo .gitignore para projetos Java/IDE com comentários didáticos
+# -----------------------------------------------------------------------------
+# Este arquivo informa ao Git quais arquivos e pastas devem ser ignorados
+# (não versionados). Cada seção abaixo explica em detalhes o motivo de
+# ignorar determinados padrões de arquivos ou diretórios.
+# -----------------------------------------------------------------------------
+
+# ------------------------------------------------------------
+# 1. IGNORAR CONFIGURAÇÕES ESPECÍFICAS DE IDEs/EDITORES
+# ------------------------------------------------------------
+
+# Configurações do Visual Studio Code (arquivos criados automaticamente
+# quando você abre o projeto no VS Code). São arquivos de usuário/local,
+# contendo preferências de editor, depuração e extensões. Não devem
+# fazer parte do repositório, pois variam de máquina para máquina.
+.vscode/
+
+# Configurações do NetBeans (arquivos de projeto gerados pelo NetBeans).
+# Se você usar NetBeans, geralmente existe a pasta nbproject/ que armazena
+# metadados, configurações de build e preferências de usuário. Ignoramos
+# para não conflitar com configurações locais de cada desenvolvedor.
+nbproject/
+
+# ------------------------------------------------------------
+# 2. IGNORAR ARTEFATOS DE COMPILAÇÃO E SAÍDA (BUILD OUTPUT)
+# ------------------------------------------------------------
+''
+# A pasta bin/ normalmente contém arquivos compilados (.class) quando se
+# faz build diretamente da IDE ou do compilador javac. Como esses .class
+# podem ser gerados a qualquer momento, não os versionamos.
+bin/
+
+# A pasta build/ costuma ser criada por ferramentas de build (Ant, Maven,
+# Gradle ou scripts manuais). Ela armazena JARs, classes compiladas e
+# outros artefatos. Como esses arquivos podem ser recriados a partir do
+# código-fonte, não versionamos build/.
+build/
+
+# A pasta dist/ geralmente contém pacotes finais (JAR, WAR, ZIP) gerados
+# após o build. Exemplo: “dist/meuProjeto.jar”. Esses pacotes podem ser
+# grandes e são gerados de maneira determinística, portanto não precisam
+# ficar no repositório.
+dist/
+
+# ------------------------------------------------------------
+# 3. IGNORAR PASTAS E ARQUIVOS DE TESTE E RECURSOS DE IMAGEM
+# ------------------------------------------------------------
+
+# A pasta test/ pode conter casos de teste unitários ou recursos auxiliares
+# que você não deseja versionar (se, por exemplo, forem dados temporários
+# de teste ou logs gerados automaticamente). Se você tiver testes JUnit,
+# normalmente você versiona apenas o código-fonte, mas não arquivos de
+# resultados ou relatórios de teste.
+test/
+
+# A pasta src/Images/ ou src/Imagens/ (ou nomes similares) pode conter
+# imagens grandes ou arquivos temporários que não precisam ficar no Git.
+# Se for necessário manter ícones ou recursos fixos de interface, ajuste o
+# .gitignore para incluir apenas arquivos gerados ou cópias temporárias.
+src/Images/
+
+# Caso haja uma pasta src/a3/ que armazene arquivos gerados ou exportados
+# (por exemplo, logs de execução, relatórios automáticos), podemos ignorar
+# para não poluir o histórico. Ajuste de acordo com sua estrutura real.
+src/a3/
+
+# ------------------------------------------------------------
+# 4. IGNORAR ARQUIVOS ESPECÍFICOS DE PROJETO
+# ------------------------------------------------------------
+
+# Se você mantém uma pasta Obsoletos/ para guardar versões antigas ou
+# arquivos legados que não fazem mais parte do produto ativo, ignore-a
+# para não versionar conteúdo desatualizado.
+Obsoletos/
+
+# ------------------------------------------------------------
+# 5. IGNORAR BIBLIOTECAS E DEPENDÊNCIAS EXTERNAS (“LIBS”)
+# ------------------------------------------------------------
+
+# Em projetos Java, muitas vezes há uma pasta lib/ que armazena JARs de
+# bibliotecas externas. Versões específicas de JAR podem ser grandes e
+# muitas vezes você prefere usar um gerenciador de dependências (Maven,
+# Gradle) em vez de versionar diretamente os JARs. Por isso, ignoramos
+# lib/ inteira ou, se necessário, apenas alguns arquivos específicos.
+#
+# Se quiser ignorar toda a pasta “lib/”, descomente esta linha:
+# lib/
+#
+# Aqui, estamos ignorando especificamente arquivos grandes ou não essenciais
+# dentro da pasta lib/ (por exemplo, arquivos javadoc, módulos JPMS, drivers).
+# Ajuste conforme as dependências reais do seu projeto.
+lib/jna-5.9.0-javadoc.jar
+lib/jna-platform-5.9.0-javadoc.jar
+lib/jna-5.9.0-jpms.jar
+lib/jna-platform-5.9.0-jpms.jar
+lib/jna.jar
+lib/win32-x86-64.jar
+lib/win32-x86.jar
+
+# ------------------------------------------------------------
+# 6. IGNORAR ARQUIVOS DE CONFIGURAÇÃO DO ANT (build.xml) E OUTROS
+# ------------------------------------------------------------
+
+# O arquivo build.xml é usado pelo Apache Ant para descrever o processo
+# de build. Se você mantiver um build.xml de exemplo ou de referência que
+# não deva ser alterado diretamente, pode ignorar. Caso contrário, deixe
+# este arquivo versionado (depende do seu fluxo de trabalho).
+build.xml    rquivo de build do Ant (ignore apenas se for gerado ou padronizado)
+
+# ------------------------------------------------------------
+# 7. IGNORAR ARQUIVOS COMPILADOS, LOGS E OUTROS ARTEFATOS
+# ------------------------------------------------------------
+
+# Todos os arquivos *.class são produtos da compilação do Java. Eles não
+# devem ser versionados, pois podem ser regenerados a partir do código-fonte.
+*.class      rquivos de bytecode Java gerados pela compilação
+
+# Arquivos de log (geralmente terminam em .log). Contêm informações de
+# execução (stacktrace, depuração, histórico de servidor etc.). Não versionamos
+# porque crescem rapidamente e são específicos de cada máquina/execução.
+*.log        rquivos de log gerados em tempo de execução
+
+# ------------------------------------------------------------
+# 8. OUTROS ARQUIVOS TEMPORÁRIOS OU ESPECÍFICOS DO SISTEMA
+# ------------------------------------------------------------
+
+# Arquivos gerados por sistemas Windows (Thumbs.db, Desktop.ini etc.)
+# contêm miniaturas ou informações de metadados de pasta — não fazem parte
+# do código-fonte.
+Thumbs.db
+Desktop.ini
+
+# Arquivos de swap que editores como Vim criam (terminados em ~ ou .swp)
+# para recuperação de texto. Ignoramos para não versionar mudanças temporárias.
+*~           rquivos temporários que terminam com til, ex.: arquivo.txt~
+*.swp        rquivos de swap de editores (ex.: Vim)
+
+# ------------------------------------------------------------
+# 9. EXEMPLOS DE PADRÕES GLOBAIS E DICAS DE USO
+# ------------------------------------------------------------
+
+# - Para ignorar tudo em um diretório, coloque barra no final:
+#     logs/          → ignora toda a pasta “logs” e seu conteúdo
+#
+# - Para ignorar todos os arquivos de um tipo em qualquer lugar do projeto:
+#     *.tmp          → ignora arquivos temporários com extensão .tmp
+#
+# - Para não ignorar um arquivo específico dentro de um diretório ignorado,
+#   use “!” antes do padrão:
+#     logs/          → ignora todo o diretório “logs”
+#     !logs/.gitkeep → mas não ignora o arquivo “logs/.gitkeep”
+#
+# - Se quiser ignorar todos os arquivos dentro de “build/debug/” mas manter
+#   “build/release/”, use:
+#     build/debug/**     → ignora tudo dentro de build/debug
+#     !build/release/**  → não ignora nada dentro de build/release
+
+# ------------------------------------------------------------
+# 10. EXPLICAÇÃO FINAL
+# ------------------------------------------------------------
+
+# Ao manter um .gitignore bem estruturado e documentado com comentários,
+# você garante que:
+#  1) O repositório não fique poluído com arquivos gerados automaticamente.
+#  2) O histórico do Git permaneça limpo e apenas com o que realmente importa.
+#  3) Outros desenvolvedores (ou você no futuro) entendam facilmente o que
+#     está sendo ignorado e por qual motivo.
+#
+# Ajuste este arquivo conforme suas necessidades específicas, adicionando
+# ou removendo padrões à medida que seu projeto evolui. Sempre verifique
+# com `git status` para confirmar quais arquivos estão sendo monitorados
+# e quais estão sendo ignorados.
