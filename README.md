@@ -47,22 +47,14 @@ A comunicação com o banco de dados MySQL é feita através de JDBC.
    * Crie o schema `academia` no MySQL/MariaDB
    * Execute os scripts na pasta SQL necessários para constuir o banco
 
-3. **Ajuste** as credenciais em `UsuarioDao.java`:
-
-   java
-   DriverManager.getConnection(
-     "jdbc:mysql://localhost:3306/academia",
-     "seu_usuario",
-     "sua_senha"
-   );
 	
-    Usuario do script: "usuario"
-    senha do script: "senha"
+   * Usuario do script: "usuario"
+   * senha do script: "senha"
 
 
-4. **Execute** o JAR:
+3. **Execute** o JAR:
 
-   java -jar target/Academia-1.0.jar
+   * java -jar target/Academia-1.0.jar
 
 
 ---
