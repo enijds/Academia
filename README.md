@@ -44,8 +44,8 @@ A comunicação com o banco de dados MySQL é feita através de JDBC.
 
 2. **Configure** o banco de dados:
 
-   * Crie o schema `academia` no MySQL
-   * Execute o script `schema.sql` (em `src/SQL`)
+   * Crie o schema `academia` no MySQL/MariaDB
+   * Execute os scripts na pasta SQL necessários para constuir o banco
 
 3. **Ajuste** as credenciais em `UsuarioDao.java`:
 
@@ -55,13 +55,12 @@ A comunicação com o banco de dados MySQL é feita através de JDBC.
      "seu_usuario",
      "sua_senha"
    );
+	
+    Usuario do script: "usuario"
+    senha do script: "senha"
 
 
-4. **Compile e empacote**:
-
-   mvn clean package
-
-5. **Execute** o JAR:
+4. **Execute** o JAR:
 
    java -jar target/Academia-1.0.jar
 
