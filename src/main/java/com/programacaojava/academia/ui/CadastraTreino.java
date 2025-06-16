@@ -30,13 +30,16 @@ public class CadastraTreino {
         }
     }
     
+
+
+    
     /**
      * Solicita ao usuário os dados de um novo treino e insere no banco.
      * @throws Exception 
      */
     public void cadastraTreino() throws Exception {
         
-        System.out.println(".(q?)");
+       // System.out.println(".(q?)");
         // Para digitção vamos utilizar o objeto scnner da classe Scanner
         Scanner scanner = new Scanner(System.in);
         Connection        connection       = null;
@@ -99,7 +102,7 @@ public class CadastraTreino {
             }
 
             
-            // 5) Recupera o ID gerado pelo banco (auto-increment)
+            // Recupera o ID gerado pelo banco (auto-increment)
             resultSetKeys = prepareStatement.getGeneratedKeys();
             if (resultSetKeys.next()) {
                 idGerado = resultSetKeys.getInt(1);

@@ -21,6 +21,7 @@ public class DateFormatter {
         }
     }
 
+    // Converte a data tipo string do formato "dd/MM/yyyy" para LocalDate.iso
     public String formatDateForDB(String dateStr) {
         try {
             // Define o formato de entrada

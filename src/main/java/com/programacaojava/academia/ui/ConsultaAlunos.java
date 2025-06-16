@@ -132,7 +132,7 @@ public class ConsultaAlunos implements IConsulta{
                                         + "   OR CAST(id AS CHAR)              LIKE ? "
                                         + "   OR CAST(data_nascimento AS CHAR) LIKE ? "
                                         + "   OR CAST(telefone AS CHAR)        LIKE ? "
-                                        + "   OR CAST(email AS CHAR)           LIKE ?"
+                                        + "   OR CAST(email AS CHAR)           LIKE ? "
                                         ;
 
                             // adiciona a expressão SQL ao StringBuilder
@@ -151,34 +151,28 @@ public class ConsultaAlunos implements IConsulta{
                                     // se houver resultados, pega o primeiro registro
                                     if (resultSetKeys.next()) {
 
-                                            // Carrega a quantidade de registros
-                                            iContagemResultados = resultSetKeys.getInt(1);
+                                        // Carrega a quantidade de registros
+                                        iContagemResultados = resultSetKeys.getInt(1);
+                                        
+                                        // Se apenas um resultado restar , pega o registro
+                                        if (iContagemResultados == 1 ) {
 
-                                            // Se apenas um resultado restar , pega o registro
-                                            if (idPesquisa == 1 ) {
-
-                                                    // Reconstroi a string da consulta SQL
-                                                    strSQLContagem = new StringBuilder("SELECT id FROM alunos");
-
-                                                    // Adiciona os critérios de pesquisa
-                                                    strSQLContagem.append(expressaoSQL);
-
-                                                    // Prepara para fazer a consulta
-                                                    PreparedStatement preparedStatement1 = connection.prepareStatement( strSQLContagem.toString() );
-
-                                                    // Substitui o "?" pelo valor de filtro sql
-                                                    for (int i = 1; i <= 6; i++) { preparedStatement1.setString(i, filtroSQL); }
-
-                                                    // Executa a consulta
-                                                    resultSetKeys = preparedStatement1.executeQuery();
-                                                    
-                                                    // Pega o resuldo da pesquisa
-                                                    resultSetKeys.next();
-
-                                                    // Carrega na variavel de classe
-                                                    idAluno = resultSetKeys.getInt("id" );
-                                                                    
-                                                    } // if (idPesquisa == 1 ) {
+                                                // Reconstroi a string da consulta SQL
+                                                strSQLContagem = new StringBuilder("SELECT id FROM alunos");
+                                                // Adiciona os critérios de pesquisa
+                                                strSQLContagem.append(expressaoSQL);
+                                                // Prepara para fazer a consulta
+                                                PreparedStatement preparedStatement1 = connection.prepareStatement( strSQLContagem.toString() );
+                                                // Substitui o "?" pelo valor de filtro sql
+                                                for (int i = 1; i <= 6; i++) { preparedStatement1.setString(i, filtroSQL); }
+                                                // Executa a consulta
+                                                resultSetKeys = preparedStatement1.executeQuery();
+                                                // Pega o resuldo da pesquisa
+                                                resultSetKeys.next();
+                                                // Carrega na variavel de classe
+                                                idAluno = resultSetKeys.getInt("id" );
+                                                
+                                                } // if (idPesquisa == 1 ) {
 
                                             } // if (resultSetKeys.next()) {
 

@@ -1,13 +1,17 @@
 package com.programacaojava.academia.ui;
 
 import java.io.Console;
-import java.io.IOException;
 import java.io.Reader;
+import java.util.Scanner;
 
 public class EditaAluno {
 
 
-    public static void PesquisaAluno() throws IOException{
+    /**
+     * Aprendendo a utilizar o javadocs
+     * @throws Exception 
+     */
+    public static void PesquisaAluno() throws Exception{
 
             // Verifica se o console está disponível
             Console console = System.console();
@@ -20,15 +24,21 @@ public class EditaAluno {
         
             // Cria um StringBuilder para armazenar a data digitada
             StringBuilder stringBuilder = new StringBuilder();
+
+            // Carrega a leitura do console para scanner
+            Scanner scanner = new Scanner(System.in);
+
+            // Carrega classes para alterar e exluir
+            AlteraAluno alteraAluno = new AlteraAluno();
+            ExcluiAluno excluiAluno = new ExcluiAluno();
             
             // vaidador de entrada de dados
             consultaAlunos.Consulta(stringBuilder.toString());
 
             System.out.print( 
-                "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
-              + "\nId Unico para pesquisa: "   + consultaAlunos.getIdAluno() 
-              + "\nDigite para pesquisar: "    + stringBuilder.toString() 
-              );
+                  "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
+                + "\nDigite para pesquisar até filtrar um unico registro na tabela(Enter para sair): " + stringBuilder.toString() 
+                );
             
             // Se o console estiver disponível, lê a data do usuário    
             Reader reader = console.reader();
@@ -52,33 +62,117 @@ public class EditaAluno {
                     // Se for backspace, remove o último caractere do StringBuilder
                     else if ( cchar == '\b' && stringBuilder.length() > 0 ) stringBuilder.setLength(stringBuilder.length() - 1);
 
-                    // Se for um dígito e o tamanho do StringBuilder for menor que 6, adiciona o dígito ao StringBuilder
-                    //else if ( Character.isDigit(cchar) && stringBuilder.length() < 6 ) stringBuilder.append(cchar);
-                    
                     // Para qualquer outra situação, "aplica" o Continue e retorna ao inicio do while 
                     // else continue;
                     else stringBuilder.append(cchar);
                     
                     // vaidador de entrada de dados
                     consultaAlunos.Consulta(stringBuilder.toString());
-                    
 
+                    // testa se resta apenas um registro consultado
+                    if (consultaAlunos.getiContagemResultados() == 1 ){
 
+                            System.out.print( 
+                              "\nId Unico encontrado: " + consultaAlunos.getIdAluno() 
+                            + "\nEscolha a opção abaixo: " 
+                            + "\n   0 - Reinicia Consulta"
+                            + "\n   1 - Para alterar aluno"
+                            + "\n   2 - Para excluir aluno"
+                            + "\n   3 - Retorna Menu"
+                            + "\n"  );
+                              
 
-                    
-                    System.out.print( 
-                      "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
-                    + "\nId Unico para pesquisa: " + consultaAlunos.getIdAluno() 
-                    + "\nDigite para pesquisar: " + stringBuilder.toString() 
+                            //ichar = reader.read();  // Lê um único caractere
+                            
+                            while ((ichar = reader.read()) != -1) {
+
+                                    // Converte o caractere lido para char e verifica se é uma quebra de linha ou retorno
+                                    cchar = (char) ichar;  
+                                      
+                                    if (cchar == '0') {
+                                            // Se a opção for 0, limpa o console e reinicia a consulta
+                                            stringBuilder.setLength(0);
+
+                                            // Cria um objeto TerminalTexto e limpa o console
+                                            terminal.LimpaConsole();
+
+                                            // vaidador de entrada de dados
+                                            consultaAlunos.Consulta(stringBuilder.toString());
+
+                                            System.out.print( 
+                                            "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
+                                          + "\nDigite para pesquisar até filtrar um unico registro na tabela(Enter para sair): " + stringBuilder.toString() 
+                                                      );
+                                            break;
+                                            } // if (cchar == '0') {
+                                    else if ( cchar == '1' ) {
+                                            System.out.println("getIdAluno" + consultaAlunos.getIdAluno());
+
+                                            alteraAluno.atualizaCadastro(consultaAlunos.getIdAluno());
+
+                                                                                         // Cria um objeto TerminalTexto e limpa o console
+                                            terminal.LimpaConsole();
+
+                                            // vaidador de entrada de dados
+                                            consultaAlunos.Consulta(stringBuilder.toString());
+
+                                            System.out.print( 
+                                            "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
+                                          + "\nDigite para pesquisar até filtrar um unico registro na tabela(Enter para sair): " + stringBuilder.toString() 
+                                                      );
+
+                                            break;
+                                            } // if ( cchar == 1 ) {
+                                    else if ( cchar == '2' ) {
+                                            excluiAluno.excluirAlunoPorId(consultaAlunos.getIdAluno());
+
+                                         
+                                            
+                                            // Se a opção for 0, limpa o console e reinicia a consulta
+                                            stringBuilder.setLength(0);
+
+                                             // Cria um objeto TerminalTexto e limpa o console
+                                            terminal.LimpaConsole();
+
+                                            // vaidador de entrada de dados
+                                            consultaAlunos.Consulta(stringBuilder.toString());
+
+                                            System.out.print( 
+                                            "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
+                                          + "\nDigite para pesquisar até filtrar um unico registro na tabela(Enter para sair): " + stringBuilder.toString() 
+                                                      );
+
+                                                      
+
+                                            break;
+
+                                            } // else if ( cchar == 2 ) {
+                                    else if ( cchar == '3' ) {
+                                            System.out.println("Retornando ao Menu Principal");
+                                            return;
+                                            } // else if ( opcao == 3 ) {
+                                    else {
+                                            System.out.print("\rOpção Inválida, tente novamente");
+                                            }
+                                    } // while ((ichar = reader.read()) != -1) {
+
+                        } // if (consultaAlunos.getiContagemResultados() == 1 ){
+                    else {
+                          System.out.print( 
+                            "\nQuantidade de Resultados: " + consultaAlunos.getiContagemResultados() 
+                          + "\nDigite para pesquisar até filtrar um unico registro na tabela(Enter para sair): " + stringBuilder.toString() 
                                       );
+                         } // else {
 
-                    
                     } // while ((ichar = reader.read()) != -1)
 
             } // public void PesquisaAluno(){
 
+
+
+
         // main para teste de execução dentro da classe
-        public static void main(String[] args) throws IOException {
+        public static void main(String[] args) throws Exception {
             
            // EditaAluno editaAluno = new EditaAluno();
             EditaAluno.PesquisaAluno();

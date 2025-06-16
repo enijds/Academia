@@ -65,16 +65,11 @@ public class MenuPrincipal {
                 
                 // Mensagens do menu principal
                 System.out.println("Menu Principal"                     );
-                System.out.println("0. Trabalhar pela interface Grafica");
                 System.out.println("1. Cadastrar Aluno"                 );
-                System.out.println("2. Listar Alunos"                   );
-                System.out.println("3. Editar Aluno"                    );
-                System.out.println("4. Excluir Aluno"                   );
-                System.out.println("5. Cadastrar Treinos"               );
-                System.out.println("6. Listar Treinos"                  );
-                System.out.println("7. Editar Treinos"                  );
-                System.out.println("8. Excluir Treinos"                 );
-                System.out.println("9. Sair"                            );
+                System.out.println("2. Lista/Edita/Exlui Alunos"        );
+                System.out.println("3. Cadastrar Treinos"               );
+                System.out.println("4. Lista/Edita/Exlui Treinos"       );
+                System.out.println("5. Sair"                            );
                 System.out.println("Escolha uma opção: "                );
 
                 } // public void exibirMenu() {
@@ -86,16 +81,11 @@ public class MenuPrincipal {
         switch (opcao) {
 
                 // 
-                case 2  -> { ConsultaAlunos consultaAlunos   = new ConsultaAlunos()  ;consultaAlunos.Consulta();       }// Chama o método de consulta para listar as alunos}
-                case 6  -> { ConsultaTreinos consultaTreinos = new ConsultaTreinos() ;consultaTreinos.Consulta();      }// Chama o método de consulta para listar os treinos}
                 case 1  -> { CadastraAluno cadastraAluno     = new CadastraAluno()   ;cadastraAluno.cadastraAluno();   }
-                case 5  -> { CadastraTreino cadastraTreino   = new CadastraTreino()  ;cadastraTreino.cadastraTreino(); }
-                case 0  -> { System.out.println("Trabalhando pela interface Gráfica..."          );}
-                case 3  -> { System.out.println("Editando Aluno..."                              );}
-                case 4  -> { System.out.println("Excluindo Aluno..."                             );}
-                case 7  -> { System.out.println("Editando Treinos..."                            );}
-                case 8  -> { System.out.println("Excluindo Treinos..."                           );}
-                case 9  -> { System.out.println("Saindo do programa..."); System.exit(0);   }
+                case 2  -> { EditaAluno editaAluno           = new EditaAluno()      ;editaAluno.PesquisaAluno();    controleMenu();  }// Chama o método de consulta para listar as alunos}
+                case 3  -> { CadastraTreino cadastraTreino   = new CadastraTreino()  ;cadastraTreino.cadastraTreino(); }
+                case 4  -> { EditaTreino editaTreino         = new EditaTreino()      ;editaTreino.pesquisaTreino();    controleMenu();  }
+                case 5  -> { System.out.println("Saindo do programa..."); System.exit(0);   }
                 default ->   System.out.println("Opção inválida. Tente novamente."               );
 
                         

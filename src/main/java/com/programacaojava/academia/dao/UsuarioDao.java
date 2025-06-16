@@ -27,11 +27,11 @@ public class UsuarioDao {
         // e exibir uma mensagem de erro apropriada
         try {
                 // Estabelece a conexão
-                System.out.println("Conectando ao banco de dados...");
+                // System.out.println("Conectando ao banco de dados...");
                 connection = DriverManager.getConnection(url, user, password);
                 
                 // System.out.println("Conexão estabelecida com sucesso!");
-                System.out.print("Conexão estabelecida com sucesso!");
+                // System.out.print("Conexão estabelecida com sucesso!");
                 // retorna o valor, o objeto connection
                 // que representa a conexão com o banco de dados
                 return connection; 

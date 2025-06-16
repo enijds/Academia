@@ -32,7 +32,7 @@ public class Academia {
     
     // Classe principal do aplicativo, onde a execução começa.
     // Contém o método main, que é o ponto de entrada do programa.
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception, Throwable {
         
         // Instancia um objeto da classe Scanner para ler a entrada do usuário
         Scanner scanner = new Scanner(System.in);

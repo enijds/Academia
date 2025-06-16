@@ -101,6 +101,7 @@ public class CadastraAluno {
         // Usuariorio digita os dados do aluno
         System.out.println("Por favor, insira os dados do aluno para continuar.");
         
+        // Data no formato iso
         data_db  = dateFormatterForConsole.lerData(); //scanner.nextLine();
         System.out.print("Nome: "              ); nome     = scanner.nextLine();
         cpf = cpfformatter.lerCPF();

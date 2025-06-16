@@ -40,7 +40,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>24</maven.compiler.target>
-    <mainClass>com.programacaojava.academia.App</mainClass>
+    <mainClass>com.programacaojava.academia.Academia</mainClass>
     <maven.compiler.source>24</maven.compiler.source>
   </properties>
 </project>
