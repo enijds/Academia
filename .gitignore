@@ -54,16 +54,6 @@ dist/
 # resultados ou relatórios de teste.
 test/
 
-# A pasta src/Images/ ou src/Imagens/ (ou nomes similares) pode conter
-# imagens grandes ou arquivos temporários que não precisam ficar no Git.
-# Se for necessário manter ícones ou recursos fixos de interface, ajuste o
-# .gitignore para incluir apenas arquivos gerados ou cópias temporárias.
-src/Images/
-
-# Caso haja uma pasta src/a3/ que armazene arquivos gerados ou exportados
-# (por exemplo, logs de execução, relatórios automáticos), podemos ignorar
-# para não poluir o histórico. Ajuste de acordo com sua estrutura real.
-src/a3/
 
 # ------------------------------------------------------------
 # 4. IGNORAR ARQUIVOS ESPECÍFICOS DE PROJETO

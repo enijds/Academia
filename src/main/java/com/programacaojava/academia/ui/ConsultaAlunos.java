@@ -121,6 +121,7 @@ public class ConsultaAlunos implements IConsulta{
                     StringBuilder strSQL         = new StringBuilder("SELECT * FROM alunos"); // Consulta SQL
                     StringBuilder strSQLContagem = new StringBuilder("SELECT COUNT(*) FROM alunos"); // Quantidade de Consulta SQL
                     
+                
                     // Se houver filtro não‐vazio, anexa " WHERE <filtro>"
                     if (filtroWhereSQL != null && !filtroWhereSQL.trim().isEmpty()) {
                             
@@ -135,6 +136,8 @@ public class ConsultaAlunos implements IConsulta{
                                         + "   OR CAST(email AS CHAR)           LIKE ? "
                                         ;
 
+
+                
                             // adiciona a expressão SQL ao StringBuilder
                             strSQL.append(expressaoSQL);
                             strSQLContagem.append(expressaoSQL);
@@ -159,7 +162,7 @@ public class ConsultaAlunos implements IConsulta{
 
                                                 // Reconstroi a string da consulta SQL
                                                 strSQLContagem = new StringBuilder("SELECT id FROM alunos");
-                                                // Adiciona os critérios de pesquisa
+                                                 // Adiciona os critérios de pesquisa
                                                 strSQLContagem.append(expressaoSQL);
                                                 // Prepara para fazer a consulta
                                                 PreparedStatement preparedStatement1 = connection.prepareStatement( strSQLContagem.toString() );
